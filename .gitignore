@@ -1,0 +1,7 @@
+.vs/
+bin/
+lib/
+obj/
+*.pubxml
+*.user
+/css/*.css

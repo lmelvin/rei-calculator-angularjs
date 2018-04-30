@@ -1,0 +1,252 @@
+﻿<div ng-controller="calcController">
+    <div class="row">
+        <div class="medium-5 columns">
+            <form>
+                <fieldset>
+                    <legend>Property Valuation</legend>
+                    <div class="row">
+                        <div class="medium-6 columns">
+                            <div class="row collapse">
+                                <label>Property Value</label>
+                                <div class="small-2 columns">
+                                    <span class="prefix">$</span>
+                                </div>
+                                <div class="small-10 columns">
+                                    <input type="number"
+                                           min="0"
+                                           step="1000"
+                                           ng-model="vm.propertyValue"
+                                           ng-change="vm.recalc()" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-6 columns">
+                            <div class="row collapse">
+                                <label>Down Payment</label>
+                                <div class="small-2 columns">
+                                    <span class="prefix">$</span>
+                                </div>
+                                <div class="small-10 columns">
+                                    <input type="number"
+                                           min="0"
+                                           ng-model="vm.downPayment"
+                                           ng-change="vm.updateDownPaymentPercentage()" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medium-6 columns">
+                            <div class="row collapse">
+                                <label>&nbsp;</label>
+                                <div class="small-10 columns">
+                                    <input type="number"
+                                           max="100"
+                                           min="0"
+                                           ng-model="vm.downPaymentPercentage"
+                                           ng-change="vm.updateDownPaymentFromPercentage()" />
+                                </div>
+                                <div class="small-2 columns">
+                                    <span class="postfix">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-6 columns">
+                            <div class="row collapse">
+                                <label>Expected Rent</label>
+                                <div class="small-2 columns">
+                                    <span class="prefix">$</span>
+                                </div>
+                                <div class="small-10 columns">
+                                    <input type="number"
+                                           min="0"
+                                           step="25"
+                                           ng-model="vm.expectedRent"
+                                           ng-change="vm.recalc()" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Operating Cost (Montly)</legend>
+                    <div class="row">
+                        <div class="medium-6 columns">
+                            <div class="row collapse">
+                                <label>Mortgage</label>
+                                <div class="small-2 columns">
+                                    <span class="prefix">$</span>
+                                </div>
+                                <div class="small-10 columns">
+                                    <input type="number"
+                                           min="0"
+                                           ng-model="vm.montlyMortgage"
+                                           ng-change="vm.recalc()"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medium-6 columns">
+                            <div class="row collapse">
+                                <label>HOA</label>
+                                <div class="small-2 columns">
+                                    <span class="prefix">$</span>
+                                </div>
+                                <div class="small-10 columns">
+                                    <input type="number"
+                                           max="100"
+                                           min="0"
+                                           ng-model="vm.monthlyHoA"
+                                           ng-change="vm.recalc()" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-6 columns">
+                            <div class="row collapse">
+                                <label>Tax</label>
+                                <div class="small-2 columns">
+                                    <span class="prefix">$</span>
+                                </div>
+                                <div class="small-10 columns">
+                                    <input type="number"
+                                           min="0"
+                                           ng-model="vm.monthlyTax"
+                                           ng-change="vm.recalc()" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medium-6 columns">
+                            <div class="row collapse">
+                                <label>Insurance</label>
+                                <div class="small-2 columns">
+                                    <span class="prefix">$</span>
+                                </div>
+                                <div class="small-10 columns">
+                                    <input type="number" min="0" ng-model="vm.monthlyInsurance" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="medium-6 columns">
+                            <div class="row collapse">
+                                <label>Maintenance</label>
+                                <div class="small-2 columns">
+                                    <span class="prefix">$</span>
+                                </div>
+                                <div class="small-10 columns">
+                                    <input type="number"
+                                           min="0"
+                                           ng-model="vm.montlyMaintenance"
+                                           ng-change="vm.recalc()" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medium-6 columns">
+                            <div class="row collapse">
+                                <label>&nbsp;</label>
+                                <div class="small-10 columns">
+                                    <input type="number"
+                                           max="100"
+                                           min="0"
+                                           ng-model="vm.montlyMaintenancePercentage"
+                                           ng-change="vm.updateMaintenanceFromPercentage()" />
+                                </div>
+                                <div class="small-2 columns">
+                                    <span class="postfix">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="medium-6 columns">
+                            <div class="row collapse">
+                                <label>Management</label>
+                                <div class="small-2 columns">
+                                    <span class="prefix">$</span>
+                                </div>
+                                <div class="small-10 columns">
+                                    <input type="number"
+                                           min="0"
+                                           ng-model="vm.monthlyManagement"
+                                           ng-change="vm.recalc()"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medium-6 columns">
+                            <div class="row collapse">
+                                <label>&nbsp;</label>
+                                <div class="small-10 columns">
+                                    <input type="number"
+                                           max="100"
+                                           min="0"
+                                           ng-model="vm.montlyManagementPercentage"
+                                           ng-change="vm.updateManagementFromPercentage()"/>
+                                </div>
+                                <div class="small-2 columns">
+                                    <span class="postfix">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="medium-6 columns">
+                            <div class="row collapse">
+                                <label>Capital Expense</label>
+                                <div class="small-2 columns">
+                                    <span class="prefix">$</span>
+                                </div>
+                                <div class="small-10 columns">
+                                    <input type="number"
+                                           min="0"
+                                           ng-model="vm.capEx"
+                                           ng-change="vm.recalc()" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="medium-7 columns">
+            <br />
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Operating Expense</td>
+                        <td>{{ vm.getOperatingExpense() | currency : '$' : 2 }}</td>
+                    </tr>
+                    <tr>
+                        <td>Operating Expense Percentage</td>
+                        <td>{{ vm.getOperatingExpensePercentage() | number : 2 }}%</td>
+                    </tr>
+                    <tr>
+                        <td>Operating Net (Monthly)</td>
+                        <td>{{ vm.getMonthlyOperatingNet() | currency : '$' : 2 }}</td>
+                    </tr>
+                    <tr>
+                        <td>Operating Net (Annual)</td>
+                        <td>{{ vm.getAnnualOperatingNet() | currency : '$' : 2 }}</td>
+                    </tr>
+                    <tr>
+                        <td>Maintenance (Annual)</td>
+                        <td>{{ vm.getAnnualMaintenance() | currency : '$' : 2 }} ({{ vm.getAnnualMaintenanceAsPercentageOfPropertyValue() | number : 2 }}%)</td>
+                    </tr>
+                    <tr>
+                        <td>CoC</td>
+                        <td>{{ vm.getCashOnCash() | number : fractionSize }}%</td>
+                    </tr>
+                    <tr>
+                        <td>Years to Recover DP</td>
+                        <td>{{ vm.downPayment/vm.getAnnualOperatingNet() | number : 2 }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
